@@ -500,10 +500,8 @@ export function OnboardingWizard() {
     setLoading(false);
     reset();
     closeOnboarding();
-    if (createdCompanyPrefix && createdIssueRef) {
-      navigate(`/${createdCompanyPrefix}/issues/${createdIssueRef}`);
-      return;
-    }
+    // Always navigate to dashboard after onboarding - don't navigate to the first
+    // issue, as that creates a stale path that gets restored on company switch.
     if (createdCompanyPrefix) {
       navigate(`/${createdCompanyPrefix}/dashboard`);
       return;
